@@ -5,7 +5,7 @@ import Header from "../components/Header/Header";
 import Image from "next/image";
 import WorkList from "../components/WorkList/WorkList";
 import styled from "styled-components";
-import badTesting from "../public/images/bad-testing.jpg";
+import fs from "fs";
 
 type WorkProps = {
   title: string;
@@ -23,10 +23,7 @@ const Work: NextPage<WorkProps> = ({ title, images }: WorkProps) => {
       <Header pageTitle={title == "Work" ? "Red Square" : "Work"} />
 
       <main>
-        <ImageWrapper>
-          <Image src={badTesting} alt="bad testing" />
-          <img src="../public/images/cne-thumb.jpg" alt="bad testing" />
-        </ImageWrapper>
+        <WorkList images={images} />
       </main>
 
       <Footer pageTitle={title == "Work" ? "Red Square" : "Work"} />
@@ -38,8 +35,14 @@ Work.defaultProps = {
   title: "Work",
 };
 
-const ImageWrapper = styled.div`
-  width: 80%;
-`;
+export const getStaticProps: GetStaticProps = async () => {
+  const folderpath = "./public/images";
+  let images = fs.readdirSync(folderpath);
+  return {
+    props: {
+      images,
+    },
+  };
+};
 
 export default Work;

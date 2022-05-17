@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import WorkItem from "../WorkItem/WorkItem";
 
 type WorkListProps = {
@@ -9,12 +10,18 @@ const WorkList = ({ images }: WorkListProps) => {
   return (
     <div>
       {images.map((image) => (
-        <div key={image}>
+        <Wrapper key={image}>
           <WorkItem image={image} />
-        </div>
+        </Wrapper>
       ))}
     </div>
   );
 };
+
+const Wrapper = styled.div`
+  width: 85%;
+  margin: 0 auto;
+  padding-block: 8px;
+`;
 
 export default WorkList;
