@@ -4,14 +4,17 @@ import WorkItem from "../WorkItem/WorkItem";
 
 type WorkListProps = {
   images: string[];
+  logos: string[];
 };
 
-const WorkList = ({ images }: WorkListProps) => {
+const WorkList = ({ images, logos }: WorkListProps) => {
+  console.log(images);
+  console.log(logos);
   return (
     <div>
-      {images.map((image) => (
+      {images.map((image, i) => (
         <Wrapper key={image}>
-          <WorkItem image={image} />
+          <WorkItem image={image} logo={logos[i]} />
         </Wrapper>
       ))}
     </div>

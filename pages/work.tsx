@@ -10,9 +10,10 @@ import fs from "fs";
 type WorkProps = {
   title: string;
   images: string[];
+  logos: string[];
 };
 
-const Work: NextPage<WorkProps> = ({ title, images }: WorkProps) => {
+const Work: NextPage<WorkProps> = ({ title, images, logos }: WorkProps) => {
   return (
     <div>
       <Head>
@@ -23,7 +24,7 @@ const Work: NextPage<WorkProps> = ({ title, images }: WorkProps) => {
       <Header pageTitle={title == "Work" ? "Red Square" : "Work"} />
 
       <main>
-        <WorkList images={images} />
+        <WorkList images={images} logos={logos} />
       </main>
 
       <Footer pageTitle={title == "Work" ? "Red Square" : "Work"} />
@@ -36,11 +37,14 @@ Work.defaultProps = {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const folderpath = "./public/images";
-  let images = fs.readdirSync(folderpath);
+  const imagesPath = "./public/images";
+  const logosPath = "./public/logos";
+  let images = fs.readdirSync(imagesPath);
+  let logos = fs.readdirSync(logosPath);
   return {
     props: {
       images,
+      logos,
     },
   };
 };
