@@ -71,6 +71,17 @@ html {
   /* Container padding */
   --mobile-padding-block: 32px;
   --mobile-padding-inline: 24px;
+  --tablet-padding-block: 72px;
+  --tablet-padding-inline: 48px;
+  --laptop-padding-block: 90px;
+  --laptop-padding-inline: 80px;
+  --desktop-padding-block: 90px;
+  --desktop-padding-inline: 136px;
+}
+
+.display {
+  display: block;
+  /* z-index: 2; */
 }
 
 `;

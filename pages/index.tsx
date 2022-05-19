@@ -3,13 +3,16 @@ import Head from "next/head";
 import styled from "styled-components";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
-import ImageReel from "../components/ImageReel/ImageReel";
+import VideoReel from "../components/VIdeoReel/VideoReel";
+import { QUERIES } from "../constants";
+import fs from "fs";
 
 type HomeProps = {
   title: string;
+  images: string[];
 };
 
-const Home: NextPage<HomeProps> = ({ title }) => {
+const Home: NextPage<HomeProps> = ({ title, images }) => {
   return (
     <div>
       <Head>
@@ -25,9 +28,9 @@ const Home: NextPage<HomeProps> = ({ title }) => {
           </Heading>
 
           <ReelSection>
-            <ImageReelWrapper>
-              <ImageReel />
-            </ImageReelWrapper>
+            <VideoReelWrapper>
+              <VideoReel images={images} />
+            </VideoReelWrapper>
           </ReelSection>
 
           <section>
@@ -44,9 +47,10 @@ const Home: NextPage<HomeProps> = ({ title }) => {
             </SecondParagraph>
           </section>
 
+          <Line />
           <ClientSection>
             <ListHeading>Select Clients</ListHeading>
-            <div>
+            <ListWrapper>
               <List>
                 <li>Cherokee Casinos</li>
                 <li>Flipboard</li>
@@ -69,8 +73,9 @@ const Home: NextPage<HomeProps> = ({ title }) => {
                 <li>Twix</li>
                 <li>Wind Creek Hospitality</li>
               </List>
-            </div>
+            </ListWrapper>
           </ClientSection>
+          <Line />
         </Wrapper>
       </main>
       <Footer pageTitle={title == "Home" ? "Work" : "Red Square"} />
@@ -85,27 +90,69 @@ Home.defaultProps = {
 const Wrapper = styled.div`
   padding-inline: var(--mobile-padding-inline);
   color: var(--color-white);
+
+  @media ${QUERIES.phoneAndBigger} {
+    padding-inline: var(--tablet-padding-inline);
+  }
+
+  @media ${QUERIES.tabletAndBigger} {
+    padding-inline: calc(var(--laptop-padding-inline) * 1.8);
+  }
+
+  @media ${QUERIES.laptopAndBigger} {
+    padding-inline: calc(var(--desktop-padding-inline) * 1.15);
+  }
+
+  @media ${QUERIES.desktop} {
+    padding-inline: calc(var(--desktop-padding-inline) * 1.55);
+  }
 `;
 
 const Heading = styled.h1`
-  padding-top: clamp(11rem, 45vw, 12.5rem);
+  padding-top: clamp(11rem, 46vw, 13.5rem);
   font-family: var(--font-volkhov);
   font-size: 2.3rem;
   font-weight: 700;
-  line-height: 2.8rem;
+  line-height: 1.3;
+
+  @media ${QUERIES.phoneAndBigger} {
+    font-size: clamp(2.3rem, 7vw, 4.3rem);
+    line-height: 1.2;
+    padding-top: calc(13.5rem - 10vw);
+    padding-bottom: clamp(1rem, 5vw, 6rem);
+  }
+
+  @media ${QUERIES.tabletAndBigger} {
+    font-size: clamp(4.3rem, 7.2vw, 7rem);
+    line-height: 1;
+  }
 `;
 
 const ReelSection = styled.div`
   padding-top: clamp(2rem, 9vw, 4rem);
   padding-bottom: 28px;
   margin-inline: calc(var(--mobile-padding-inline) * -1);
-  border: 1px solid red;
+
+  @media ${QUERIES.phoneAndBigger} {
+    margin-inline: calc(var(--tablet-padding-inline) * -1);
+  }
+
+  @media ${QUERIES.tabletAndBigger} {
+    margin-inline: calc(var(--laptop-padding-inline) * 1.35 * -1);
+  }
 `;
 
-const ImageReelWrapper = styled.div`
+const VideoReelWrapper = styled.div`
   width: 100%;
-  height: clamp(190px, 56vw, 400px);
-  border: 2px solid blue;
+  height: clamp(190px, 55vw, 700px);
+  overflow: hidden;
+  transition: transform 200ms ease-in;
+  will-change: transform;
+
+  &:hover {
+    transform: scale(0.99);
+    transition: transform 200ms ease-out;
+  }
 `;
 
 const Paragraph = styled.p`
@@ -122,12 +169,36 @@ const SecondParagraph = styled.p`
   font-size: 1.3rem;
   font-weight: 500;
   line-height: 1.5;
+
+  @media ${QUERIES.phoneAndBigger} {
+    padding-bottom: 48px;
+  }
+`;
+
+const Line = styled.div`
+  margin: 0;
+  padding: 0;
+  height: 0.1px;
+  background-color: var(--color-gray);
+  filter: opacity(0.5);
 `;
 
 const ClientSection = styled.section`
-  border-top: 1px solid var(--color-gray);
-  border-bottom: 1px solid var(--color-gray);
-  padding: 36px 0 28px 0;
+  padding: 56px 0 72px 0;
+
+  @media ${QUERIES.tabletAndBigger} {
+    display: flex;
+    justify-content: space-between;
+  }
+`;
+
+const ListWrapper = styled.ul`
+  padding-inline: 0;
+
+  @media ${QUERIES.phoneAndBigger} {
+    display: flex;
+    gap: 64px;
+  }
 `;
 
 const ListHeading = styled.div`
@@ -145,8 +216,24 @@ const List = styled.ul`
   li {
     font-family: var(--font-poppins);
     font-size: 1.3rem;
-    line-height: 1.7;
+    line-height: 1.9;
+  }
+
+  @media ${QUERIES.tabletAndBigger} {
+    li {
+      font-size: 1rem;
+    }
   }
 `;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const imagesPath = "./public/images";
+  let images = fs.readdirSync(imagesPath);
+  return {
+    props: {
+      images,
+    },
+  };
+};
 
 export default Home;

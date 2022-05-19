@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { QUERIES } from "../../constants";
 import PageLink from "../PageLink/PageLink";
 import { VisuallyHidden } from "../VisuallyHidden";
 
@@ -62,6 +63,27 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   isolation: isolate;
+
+  @media ${QUERIES.phoneAndBigger} {
+    padding: var(--tablet-padding-block) var(--tablet-padding-inline);
+  }
+
+  @media ${QUERIES.tabletAndBigger} {
+    padding-top: var(--laptop-padding-block);
+    padding-inline: calc(var(--laptop-padding-inline) * 1.8);
+  }
+
+  @media ${QUERIES.laptopAndBigger} {
+    padding-top: calc(var(--desktop-padding-block) * 1.1);
+    padding-bottom: calc(var(--desktop-padding-block) * 0.8);
+    padding-inline: calc(var(--desktop-padding-inline) * 1.15);
+  }
+
+  @media ${QUERIES.desktop} {
+    padding-top: var(--desktop-padding-block);
+    padding-bottom: calc(var(--desktop-padding-block) * 1.3);
+    padding-inline: calc(var(--desktop-padding-inline) * 1.55);
+  }
 `;
 
 const SquareWrapper = styled.a`

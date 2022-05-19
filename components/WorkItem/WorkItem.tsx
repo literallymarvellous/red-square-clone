@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import white from "../../public/logos/Logo_Horiz_White.svg";
+import { QUERIES } from "../../constants";
 
 type WorkItemProps = {
   image: string;
@@ -32,6 +32,7 @@ const WorkItem = ({ image, logo }: WorkItemProps) => {
           alt={logo}
           width={120}
           height={120}
+          layout="responsive"
         />
       </LogoWrapper>
     </Wrapper>
@@ -45,6 +46,15 @@ const Wrapper = styled.div`
 const ImageWrapper = styled.div`
   width: 100%;
   display: block;
+  will-change: transfrom filter;
+  transition: filter 200ms ease-in, transform 250ms ease-in;
+
+  ${Wrapper}:hover &, 
+  ${Wrapper}:focus & {
+    filter: brightness(40%);
+    transform: scale(0.98);
+    transition: filter 300ms ease-out, transform 250ms ease-out;
+  }
 
   img {
     border-radius: 4px;
@@ -59,6 +69,11 @@ const LogoWrapper = styled.div`
   width: 120px;
   height: 120px;
   margin: auto;
+
+  @media ${QUERIES.phoneAndBigger} {
+    width: 180px;
+    height: 180px;
+  }
 `;
 
 export default WorkItem;

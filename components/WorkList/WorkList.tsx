@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { QUERIES } from "../../constants";
 import WorkItem from "../WorkItem/WorkItem";
 
 type WorkListProps = {
@@ -8,23 +9,37 @@ type WorkListProps = {
 };
 
 const WorkList = ({ images, logos }: WorkListProps) => {
-  console.log(images);
-  console.log(logos);
   return (
-    <div>
+    <Wrapper>
       {images.map((image, i) => (
-        <Wrapper key={image}>
+        <WorkListrapper key={image}>
           <WorkItem image={image} logo={logos[i]} />
-        </Wrapper>
+        </WorkListrapper>
       ))}
-    </div>
+    </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  width: 85%;
+  padding-bottom: 32px;
+`;
+
+const WorkListrapper = styled.div`
+  padding-inline: var(--mobile-padding-inline);
   margin: 0 auto;
   padding-block: 8px;
+
+  @media ${QUERIES.phoneAndBigger} {
+    padding-inline: var(--tablet-padding-inline);
+  }
+
+  @media ${QUERIES.tabletAndBigger} {
+    padding-inline: var(--laptop-padding-inline);
+  }
+
+  @media ${QUERIES.desktop} {
+    padding-inline: var(--desktop-padding-inline);
+  }
 `;
 
 export default WorkList;

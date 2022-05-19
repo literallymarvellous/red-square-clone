@@ -7,14 +7,14 @@ import LiIcon from "../../public/icons/LI.svg";
 import TwIcon from "../../public/icons/TW.svg";
 import NugsIcon from "../../public/icons/Nugs.svg";
 import PageLink from "../PageLink/PageLink";
-import flipImg from "../../public/images/flip-thumb.jpg";
+import flipImg from "../../public/images/flipboard.jpg";
+import { QUERIES } from "../../constants";
 
 type FooterProps = {
   pageTitle: string;
 };
 
 const Footer = ({ pageTitle }: FooterProps) => {
-  console.log(pageTitle);
   return (
     <footer>
       <Wrapper>
@@ -23,7 +23,7 @@ const Footer = ({ pageTitle }: FooterProps) => {
             <div>Let&#39;s talk.</div>
             <div>hi@rsq.com</div>
           </EmailWrapper>
-          <div>
+          <ContactWrapper>
             <SocialsWrapper>
               <NugsModal>
                 <Image src={NugsIcon} alt="nugs logo" />
@@ -48,7 +48,7 @@ const Footer = ({ pageTitle }: FooterProps) => {
               <div>Chicago, IL</div>
               <div>Tulsa, Ok</div>
             </LocationWrapper>
-          </div>
+          </ContactWrapper>
         </MainFooter>
 
         <SubFooter
@@ -59,7 +59,7 @@ const Footer = ({ pageTitle }: FooterProps) => {
           }
         >
           <SubFooterImageWrapper>
-            <Image src={flipImg} alt="flip image" />
+            <Image src={flipImg} alt="flip image" layout="responsive" />
           </SubFooterImageWrapper>
           <SubFooterMain>
             <div>All projects</div>
@@ -73,11 +73,43 @@ const Footer = ({ pageTitle }: FooterProps) => {
 
 const Wrapper = styled.div`
   padding-inline: var(--mobile-padding-inline);
+
+  @media ${QUERIES.phoneAndBigger} {
+    padding-inline: var(--tablet-padding-inline);
+  }
+
+  @media ${QUERIES.tabletAndBigger} {
+    padding-inline: calc(var(--laptop-padding-inline) * 1.8);
+  }
+
+  @media ${QUERIES.laptopAndBigger} {
+    padding-top: calc(var(--tablet-padding-block) * 0.1);
+    padding-inline: calc(var(--desktop-padding-inline) * 1.2);
+  }
+
+  @media ${QUERIES.desktop} {
+    padding-top: var(--desktop-padding-block);
+    padding-inline: calc(var(--desktop-padding-inline) * 1.55);
+  }
 `;
 
 const MainFooter = styled.div`
-  padding-top: clamp(2rem, 11vw, 4rem);
-  padding-bottom: 32px;
+  padding-top: clamp(2rem, 11vw, 3.4rem);
+  padding-bottom: 36px;
+
+  @media ${QUERIES.tabletAndBigger} {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  @media ${QUERIES.phoneAndBigger} {
+    padding-bottom: 48px;
+  }
+
+  @media ${QUERIES.desktop} {
+    padding-bottom: calc(var(--desktop-padding-block) * 1.3);
+  }
 `;
 
 const EmailWrapper = styled.div`
@@ -93,13 +125,40 @@ const EmailWrapper = styled.div`
   div:last-of-type {
     color: var(--color-red);
   }
+
+  @media ${QUERIES.phoneAndTablet} {
+    div {
+      font-size: 3.5rem;
+    }
+  }
+
+  @media ${QUERIES.tabletAndLaptop} {
+    padding-block: 2px;
+
+    div {
+      font-size: 2.2rem;
+    }
+  }
+
+  @media ${QUERIES.laptopAndBigger} {
+    div {
+      font-size: 3.5rem;
+    }
+  }
 `;
+
+const ContactWrapper = styled.div``;
 
 const SocialsWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 32px;
-  padding: 24px 0 24px 0;
+  padding-block: 24px;
+
+  @media ${QUERIES.tabletAndBigger} {
+    padding-block: 8px;
+    justify-content: flex-end;
+  }
 `;
 
 const NugsModal = styled.div`
@@ -149,9 +208,19 @@ const SubFooter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-block: 50px;
+  padding-block: 44px;
   position: relative;
   overflow: hidden;
+
+  @media ${QUERIES.phoneAndBigger} {
+    margin-inline: 0;
+    margin-top: 130px;
+    padding-block: 12px;
+  }
+
+  @media ${QUERIES.tabletAndBigger} {
+    margin-inline: calc(var(--laptop-padding-inline) * -1.45);
+  }
 `;
 
 const SubFooterImageWrapper = styled.div`
@@ -159,14 +228,32 @@ const SubFooterImageWrapper = styled.div`
   inset: 0;
   width: 100%;
   height: 100%;
+  display: block;
   filter: blur(10px);
 `;
 
 const SubFooterMain = styled.div`
   display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-poppins);
 
   div:first-of-type {
     display: none;
+    color: var(--color-white);
+    position: relative;
+  }
+
+  @media ${QUERIES.phoneAndBigger} {
+    justify-content: space-between;
+    padding-inline: 108px;
+
+    div:first-of-type {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
   }
 `;
 
