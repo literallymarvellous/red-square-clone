@@ -9,6 +9,8 @@ import {
 export interface PageContextInterface {
   backdrop: boolean;
   setBackdrop: Dispatch<SetStateAction<boolean>>;
+  modal: boolean;
+  setModal: Dispatch<SetStateAction<boolean>>;
 }
 
 export const PageContext = createContext<PageContextInterface | null>(null);
@@ -19,9 +21,10 @@ export const PageContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [backdrop, setBackdrop] = useState(false);
+  const [modal, setModal] = useState(false);
 
   return (
-    <PageContext.Provider value={{ backdrop, setBackdrop }}>
+    <PageContext.Provider value={{ backdrop, setBackdrop, modal, setModal }}>
       {children}
     </PageContext.Provider>
   );

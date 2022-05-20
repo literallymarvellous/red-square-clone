@@ -6,8 +6,8 @@ import Header from "../components/Header/Header";
 import VideoReel from "../components/VIdeoReel/VideoReel";
 import { QUERIES } from "../constants";
 import fs from "fs";
-import { useState } from "react";
-import { PageContextInterface, usePageContext } from "../hooks/pageContext";
+import Backdrop from "../components/Backdrop/Backdrop";
+import NugsModal from "../components/NugsModal/NugsModal";
 
 type HomeProps = {
   title: string;
@@ -15,10 +15,6 @@ type HomeProps = {
 };
 
 const Home: NextPage<HomeProps> = ({ title, images }) => {
-  // const [backdrop, setBackdrop] = useState(false);
-  const context = usePageContext();
-  const backdrop = context?.backdrop;
-
   return (
     <PageWrapper>
       <Head>
@@ -86,23 +82,9 @@ const Home: NextPage<HomeProps> = ({ title, images }) => {
       </main>
       <Footer pageTitle={title == "Home" ? "Work" : "Red Square"} />
 
-      <BackDrop
-        style={
-          backdrop
-            ? {
-                opacity: "0.8",
-                position: "absolute",
-                backdropFilter: "blur(20px)",
-                transition:
-                  "opacity 300ms ease-out, backdrop-filter 300ms ease-out",
-              }
-            : {
-                opacity: "0",
-                position: "relative",
-                transition: "opacity 5000ms",
-              }
-        }
-      />
+      <NugsModal />
+
+      <Backdrop />
     </PageWrapper>
   );
 };
@@ -114,16 +96,6 @@ Home.defaultProps = {
 const PageWrapper = styled.div`
   height: 100%;
   position: relative;
-`;
-
-const BackDrop = styled.div`
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  background: var(--color-black);
-  transition: opacity 5000ms ease-in, backdrop-filter 300ms ease-in;
 `;
 
 const Wrapper = styled.div`

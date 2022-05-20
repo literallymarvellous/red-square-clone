@@ -82,4 +82,9 @@ html {
 .display {
   display: block;
 }
+
+body.modal-open {
+  height: 100vh;
+  overflow-y: hidden;
+}
 `;

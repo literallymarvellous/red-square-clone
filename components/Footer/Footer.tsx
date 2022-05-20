@@ -9,12 +9,23 @@ import NugsIcon from "../../public/icons/Nugs.svg";
 import PageLink from "../PageLink/PageLink";
 import flipImg from "../../public/images/flipboard.jpg";
 import { QUERIES } from "../../constants";
+import { usePageContext } from "../../hooks/pageContext";
 
 type FooterProps = {
   pageTitle: string;
 };
 
 const Footer = ({ pageTitle }: FooterProps) => {
+  const context = usePageContext();
+  const modal = context.modal;
+  const setModal = context.setModal;
+
+  const toggleModal = () => {
+    setModal(!modal);
+    const body = document.querySelector("body") as HTMLBodyElement;
+    body.classList.toggle("modal-open");
+  };
+
   return (
     <footer>
       <Wrapper>
@@ -25,7 +36,7 @@ const Footer = ({ pageTitle }: FooterProps) => {
           </EmailWrapper>
           <ContactWrapper>
             <SocialsWrapper>
-              <NugsModal>
+              <NugsModal onClick={toggleModal}>
                 <Image src={NugsIcon} alt="nugs logo" />
               </NugsModal>
               <Icons>
