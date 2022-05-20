@@ -81,7 +81,5 @@ html {
 
 .display {
   display: block;
-  /* z-index: 2; */
 }
-
 `;

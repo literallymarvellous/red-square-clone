@@ -29,18 +29,18 @@ const Footer = ({ pageTitle }: FooterProps) => {
                 <Image src={NugsIcon} alt="nugs logo" />
               </NugsModal>
               <Icons>
-                <a>
+                <IconWrapper>
                   <VisuallyHidden>Instagram</VisuallyHidden>
                   <Image src={IgIcon} alt="instagram icon" />
-                </a>
-                <a>
+                </IconWrapper>
+                <IconWrapper>
                   <VisuallyHidden>Twitter</VisuallyHidden>
                   <Image src={TwIcon} alt="instagram icon" />
-                </a>
-                <a>
+                </IconWrapper>
+                <IconWrapper>
                   <VisuallyHidden>Linkendin</VisuallyHidden>
                   <Image src={LiIcon} alt="instagram icon" />
-                </a>
+                </IconWrapper>
               </Icons>
             </SocialsWrapper>
             <LocationWrapper>
@@ -59,7 +59,12 @@ const Footer = ({ pageTitle }: FooterProps) => {
           }
         >
           <SubFooterImageWrapper>
-            <Image src={flipImg} alt="flip image" layout="responsive" />
+            <Image
+              className="numsImg"
+              src={flipImg}
+              alt="flip image"
+              layout="responsive"
+            />
           </SubFooterImageWrapper>
           <SubFooterMain>
             <div>All projects</div>
@@ -72,6 +77,7 @@ const Footer = ({ pageTitle }: FooterProps) => {
 };
 
 const Wrapper = styled.div`
+  isolation: isolate;
   padding-inline: var(--mobile-padding-inline);
 
   @media ${QUERIES.phoneAndBigger} {
@@ -169,6 +175,20 @@ const NugsModal = styled.div`
   justify-content: center;
   align-items: center;
   margin-left: 28px;
+  cursor: pointer;
+
+  &:hover {
+    /* filter: brightness(0.5); */
+    transition: filter 250ms, color 250ms;
+
+    img {
+      filter: hue-rotate(60deg) saturate(16%) brightness(66%);
+    }
+
+    &::before {
+      background: hsl(34, 16%, 66%);
+    }
+  }
 
   ::before {
     content: "+";
@@ -190,6 +210,17 @@ const Icons = styled.div`
   padding-top: 6px;
   align-items: flex-end;
   gap: 28px;
+`;
+
+const IconWrapper = styled.a`
+  cursor: pointer;
+  transition: transform 250ms, filter 250ms;
+
+  &:hover {
+    transform: scale(0.99);
+    filter: brightness(0.5);
+    transition: transform 250ms, filter 250ms;
+  }
 `;
 
 const LocationWrapper = styled.div`

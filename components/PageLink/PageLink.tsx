@@ -1,6 +1,7 @@
 import Link from "next/link";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { QUERIES } from "../../constants";
+import { PageContextInterface, usePageContext } from "../../hooks/pageContext";
 
 type PageLinkProps = {
   pageTitle: string;
@@ -8,15 +9,41 @@ type PageLinkProps = {
 
 const PageLink = ({ pageTitle }: PageLinkProps) => {
   const page = pageTitle === "Work" ? "work" : "";
+  const context = usePageContext();
+
+  const backdrop = context.backdrop;
+  const setBackdrop = context.setBackdrop;
+
+  const mouseEnter = () => {
+    setBackdrop(true);
+  };
+
+  const mouseLeave = () => {
+    setBackdrop(false);
+  };
 
   return (
-    <Link href={`/${page}`}>
-      <Wrapper>{pageTitle}</Wrapper>
-    </Link>
+    <Wrapper
+      onMouseEnter={mouseEnter}
+      onMouseLeave={mouseLeave}
+      style={backdrop ? { zIndex: 3 } : {}}
+    >
+      <Link href={`/${page}`}>
+        <LinkWrapper>{pageTitle}</LinkWrapper>
+      </Link>
+    </Wrapper>
   );
 };
 
-const Wrapper = styled.a`
+const Wrapper = styled.div`
+  padding-left: 4px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const LinkWrapper = styled.a`
   --chevron-gap: 24px;
   position: relative;
   margin-right: var(--chevron-gap);
@@ -27,14 +54,27 @@ const Wrapper = styled.a`
   justify-content: center;
   font-weight: 500;
   cursor: pointer;
+  transition: transform 350ms;
 
   &::after {
     content: ">";
+    display: block;
     position: absolute;
     font-size: 1.4rem;
     font-weight: 300;
     color: var(--color-gray);
     right: calc(var(--chevron-gap) * -1);
+    transition: transform 350ms cubic-bezier(0.47, 1.8, 0.41, 0.8);
+  }
+
+  ${Wrapper}:hover & {
+    transform: translateX(4px);
+    transition: transform 300ms;
+
+    &::after {
+      transform: translateX(4px);
+      transition: transform 300ms;
+    }
   }
 
   @media ${QUERIES.phoneAndBigger} {

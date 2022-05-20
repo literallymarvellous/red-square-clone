@@ -1,5 +1,7 @@
+import Link from "next/link";
 import styled, { keyframes } from "styled-components";
 import { QUERIES } from "../../constants";
+import { usePageContext } from "../../hooks/pageContext";
 import PageLink from "../PageLink/PageLink";
 import { VisuallyHidden } from "../VisuallyHidden";
 
@@ -8,15 +10,32 @@ type HeaderProps = {
 };
 
 const Header = ({ pageTitle }: HeaderProps) => {
+  const context = usePageContext();
+
+  const backdrop = context.backdrop;
+
   return (
     <header>
       <Wrapper>
-        <SquareWrapper>
-          <Shape>
-            <VisuallyHidden>Red Square</VisuallyHidden>
-          </Shape>
-          {/* <span>Red Square</span> */}
-        </SquareWrapper>
+        <Link href="/">
+          <SquareWrapper>
+            <Shape
+              style={
+                backdrop
+                  ? {
+                      transform: "scale(0.98)",
+                      filter: "blur(3px)",
+                      transition: "transform 300ms filter 300ms",
+                    }
+                  : {}
+              }
+            >
+              <VisuallyHidden>Red Square</VisuallyHidden>
+            </Shape>
+            <Square>Red Square</Square>
+          </SquareWrapper>
+        </Link>
+
         <PageLink pageTitle={pageTitle} />
       </Wrapper>
     </header>
@@ -56,13 +75,24 @@ const fadeIn3 = keyframes`
   }
 `;
 
+const squareFadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+`;
+
 const Wrapper = styled.div`
   padding: var(--mobile-padding-block) var(--mobile-padding-inline);
   color: var(--color-white);
   font-family: var(--font-poppins);
   display: flex;
   justify-content: space-between;
-  isolation: isolate;
 
   @media ${QUERIES.phoneAndBigger} {
     padding: var(--tablet-padding-block) var(--tablet-padding-inline);
@@ -90,6 +120,8 @@ const SquareWrapper = styled.a`
   display: flex;
   align-items: center;
   gap: 16px;
+  cursor: pointer;
+  transition: filter 300ms, transform 300ms;
 `;
 
 const Shape = styled.span`
@@ -137,6 +169,14 @@ const Shape = styled.span`
     animation-fill-mode: both;
     will-change: opacity;
   }
+`;
+
+const Square = styled.span`
+  font-size: 1.5rem;
+  font-weight: 600;
+  animation: ${squareFadeIn} 2000ms ease-in-out;
+  animation-delay: 1000ms;
+  animation-fill-mode: both;
 `;
 
 export default Header;
