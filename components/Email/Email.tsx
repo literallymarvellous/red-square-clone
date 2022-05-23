@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { QUERIES } from "../../constants";
@@ -52,6 +53,16 @@ const Email = () => {
 
   return (
     <Wrapper
+      as={motion.div}
+      initial={{ opacity: 0, y: "20%" }}
+      whileInView={{
+        opacity: 1,
+        y: "0%",
+        transition: {
+          ease: [0.25, 0.1, 0.25, 1],
+          delay: 0.5,
+        },
+      }}
       onMouseEnter={mouseEnter}
       onMouseLeave={mouseLeave}
       ref={parentRef}
@@ -76,16 +87,10 @@ const EmailWrapper = styled.div`
   position: relative;
   margin-left: -2px;
   transform-style: preserve-3d;
-  /* transform-origin: top right; */
-  /* transform-origin: center; */
-  /* transform-origin: top left; */
   transition: transform 250ms ease-in;
+  will-change: transform;
 
   ${Wrapper}:hover & {
-    /* transform: rotateY(10deg) rotateX(-10deg); */
-    /* transform-origin: top right; */
-    /* transform-origin: top left; */
-    /* transform: rotate3d(1, -1, 0, 10deg); */
     transition: transform 1ms ease;
   }
 

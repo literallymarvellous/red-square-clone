@@ -21,6 +21,7 @@ const WorkItem = ({ image, logo }: WorkItemProps) => {
           width={270}
           height={160}
           layout="responsive"
+          priority
         />
       </ImageWrapper>
       <LogoWrapper>

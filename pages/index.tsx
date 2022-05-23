@@ -9,6 +9,7 @@ import fs from "fs";
 import Backdrop from "../components/Backdrop/Backdrop";
 import NugsModal from "../components/NugsModal/NugsModal";
 import { usePageContext } from "../hooks/pageContext";
+import { animate, motion } from "framer-motion";
 
 type HomeProps = {
   title: string;
@@ -18,6 +19,53 @@ type HomeProps = {
 const Home: NextPage<HomeProps> = ({ title, images }) => {
   const context = usePageContext();
   const toggleModal = context.toggleModal;
+
+  const heading = {
+    visible: {
+      opacity: 1,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.25,
+        delay: 0.8,
+      },
+    },
+    hidden: {
+      opacity: 0,
+    },
+  };
+
+  const span = {
+    visible: {
+      opacity: 1,
+      transition: {
+        ease: "easeInOut",
+      },
+    },
+    hidden: { opacity: 0 },
+  };
+
+  const list = {
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+    hidden: {
+      opacity: 0,
+    },
+  };
+
+  const item = {
+    visible: {
+      opacity: 1,
+      x: "0%",
+      transition: {
+        ease: [0.25, 0.1, 0.25, 1],
+      },
+    },
+    hidden: { opacity: 0, x: "-10%" },
+  };
 
   return (
     <PageWrapper>
@@ -29,23 +77,66 @@ const Home: NextPage<HomeProps> = ({ title, images }) => {
       <Header pageTitle={title == "Home" ? "Work" : "Red Square"} />
       <main>
         <Wrapper>
-          <Heading>
-            The agency for <br /> what comes next.
-          </Heading>
+          <motion.div
+            initial={{ y: 125 }}
+            animate={{ y: 0 }}
+            transition={{
+              delay: 2.5,
+              ease: [0.25, 0.1, 0.25, 1],
+              duration: 1.5,
+            }}
+          >
+            <Heading
+              as={motion.h1}
+              initial="hidden"
+              animate="visible"
+              variants={heading}
+            >
+              <motion.span variants={span}>The</motion.span>{" "}
+              <motion.span variants={span}>agency</motion.span>{" "}
+              <motion.span variants={span}>for</motion.span> <br />{" "}
+              <motion.span variants={span}>what</motion.span>{" "}
+              <motion.span variants={span}>comes</motion.span>{" "}
+              <motion.span variants={span}>next.</motion.span>
+            </Heading>
+          </motion.div>
 
-          <ReelSection>
+          <ReelSection
+            as={motion.div}
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              ease: [0.25, 0.1, 0.25, 1],
+              duration: 1.5,
+              delay: 2.5,
+            }}
+          >
             <VideoReelWrapper>
               <VideoReel images={images} />
             </VideoReelWrapper>
           </ReelSection>
 
           <section>
-            <Paragraph>
+            <Paragraph
+              as={motion.p}
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                ease: "easeOut",
+              }}
+            >
               We deal in ideas, design and media that are category defying. When
               the world Millis, you&#39;ve got to Vanilli.
             </Paragraph>
 
-            <SecondParagraph>
+            <SecondParagraph
+              as={motion.p}
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                ease: "easeOut",
+              }}
+            >
               Red Square believes in rigorous development of brand strategy and
               whip-smart execution. We make all sorts of things. Things that
               move markets, compel audiences and sell product. We help great
@@ -53,35 +144,67 @@ const Home: NextPage<HomeProps> = ({ title, images }) => {
             </SecondParagraph>
           </section>
 
-          <Line />
+          <Line
+            as={motion.div}
+            initial={{ width: "0%" }}
+            whileInView={{ width: "100%" }}
+            transition={{
+              ease: "easeOut",
+              delay: 0.3,
+            }}
+          />
           <ClientSection>
-            <ListHeading>Select Clients</ListHeading>
+            <ListHeading
+              as={motion.div}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+            >
+              Select Clients
+            </ListHeading>
             <ListWrapper>
-              <List>
-                <li>Cherokee Casinos</li>
-                <li>Flipboard</li>
-                <li>Foxwoods</li>
-                <li>Glanbia Nutritionals</li>
-                <li>Google</li>
-                <li>Hard Rock</li>
-                <li>Hibbett Sports</li>
-                <li>Hilton Worldwide</li>
-                <li>Jack Daniel&#39;s</li>
+              <List
+                as={motion.ul}
+                initial="hidden"
+                whileInView="visible"
+                variants={list}
+              >
+                <motion.li variants={item}>Cherokee Casinos</motion.li>
+                <motion.li variants={item}>Flipboard</motion.li>
+                <motion.li variants={item}>Foxwoods</motion.li>
+                <motion.li variants={item}>Glanbia Nutritionals</motion.li>
+                <motion.li variants={item}>Google</motion.li>
+                <motion.li variants={item}>Hard Rock</motion.li>
+                <motion.li variants={item}>Hibbett Sports</motion.li>
+                <motion.li variants={item}>Hilton Worldwide</motion.li>
+                <motion.li variants={item}>Jack Daniel&#39;s</motion.li>
               </List>
-              <List>
-                <li>Nescafé</li>
-                <li>New York Pride</li>
-                <li>Patreon</li>
-                <li>Rivers Casino</li>
-                <li>Snickers</li>
-                <li>Southern Comfort</li>
-                <li>The University of Alabama</li>
-                <li>Twix</li>
-                <li>Wind Creek Hospitality</li>
+              <List
+                as={motion.ul}
+                initial="hidden"
+                whileInView="visible"
+                variants={list}
+              >
+                <motion.li variants={item}>Nescafé</motion.li>
+                <motion.li variants={item}>New York Pride</motion.li>
+                <motion.li variants={item}>Patreon</motion.li>
+                <motion.li variants={item}>Rivers Casino</motion.li>
+                <motion.li variants={item}>Snickers</motion.li>
+                <motion.li variants={item}>Southern Comfort</motion.li>
+                <motion.li variants={item}>The University of Alabama</motion.li>
+                <motion.li variants={item}>Twix</motion.li>
+                <motion.li variants={item}>Wind Creek Hospitaty</motion.li>
               </List>
             </ListWrapper>
           </ClientSection>
-          <Line />
+          <Line
+            as={motion.div}
+            initial={{ width: "0%" }}
+            whileInView={{ width: "100%" }}
+            transition={{
+              ease: "easeOut",
+              delay: 0.3,
+            }}
+          />
         </Wrapper>
       </main>
       <Footer pageTitle={title == "Home" ? "Work" : "Red Square"} />
@@ -250,7 +373,7 @@ const List = styled.ul`
 
   @media ${QUERIES.tabletAndBigger} {
     li {
-      font-size: calc(1.1rem + 0.2vw);
+      font-size: calc(1.1rem + 0.1vw);
       line-height: calc(2 * 1.6vw);
     }
   }

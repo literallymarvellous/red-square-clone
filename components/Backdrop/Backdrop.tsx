@@ -32,17 +32,6 @@ const Wrapper = styled.div`
   height: 100%;
   z-index: 2;
   background: var(--color-black);
-  /* background: radial-gradient(
-    circle at 0% 50%,
-    #201f20,
-    #1f1e1f,
-    #1b1a1b,
-    #161616,
-    #101010,
-    #090909,
-    #020202,
-    #000000
-  ); */
   transition: opacity 5000ms ease-in;
 `;
 

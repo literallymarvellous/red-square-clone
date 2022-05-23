@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { QUERIES } from "../../constants";
 import { usePageContext } from "../../hooks/pageContext";
@@ -10,9 +11,14 @@ type HeaderProps = {
 };
 
 const Header = ({ pageTitle }: HeaderProps) => {
+  const [count, setCount] = useState(0);
   const context = usePageContext();
-
   const backdrop = context.backdrop;
+
+  useEffect(() => {
+    setCount((prev) => prev + 1);
+    console.log(count);
+  }, []);
 
   return (
     <header>
@@ -174,7 +180,7 @@ const Shape = styled.span`
 const Square = styled.span`
   font-size: 1.5rem;
   font-weight: 600;
-  animation: ${squareFadeIn} 2000ms ease-in-out;
+  animation: ${squareFadeIn} 2500ms ease-in-out;
   animation-delay: 1000ms;
   animation-fill-mode: both;
 `;

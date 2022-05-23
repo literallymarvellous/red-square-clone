@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Link from "next/link";
 import styled, { keyframes } from "styled-components";
 import { QUERIES } from "../../constants";
@@ -11,7 +12,6 @@ const PageLink = ({ pageTitle }: PageLinkProps) => {
   const page = pageTitle === "Work" ? "work" : "";
   const context = usePageContext();
 
-  const backdrop = context.backdrop;
   const setBackdrop = context.setBackdrop;
 
   const mouseEnter = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -25,7 +25,15 @@ const PageLink = ({ pageTitle }: PageLinkProps) => {
   };
 
   return (
-    <Wrapper onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
+    <Wrapper
+      onMouseEnter={mouseEnter}
+      onMouseLeave={mouseLeave}
+      onClick={mouseLeave}
+      as={motion.div}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.8 }}
+    >
       <Link href={`/${page}`}>
         <LinkWrapper>{pageTitle}</LinkWrapper>
       </Link>

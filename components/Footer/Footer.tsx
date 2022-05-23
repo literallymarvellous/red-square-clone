@@ -11,6 +11,7 @@ import flipImg from "../../public/images/flipboard.jpg";
 import { QUERIES } from "../../constants";
 import { usePageContext } from "../../hooks/pageContext";
 import Email from "../Email/Email";
+import { motion } from "framer-motion";
 
 type FooterProps = {
   pageTitle: string;
@@ -25,7 +26,18 @@ const Footer = ({ pageTitle }: FooterProps) => {
       <Wrapper>
         <MainFooter>
           <Email />
-          <ContactWrapper>
+          <ContactWrapper
+            as={motion.div}
+            initial={{ opacity: 0, y: "20%" }}
+            whileInView={{
+              opacity: 1,
+              y: "0%",
+              transition: {
+                ease: [0.25, 0.1, 0.25, 1],
+                delay: 0.3,
+              },
+            }}
+          >
             <SocialsWrapper>
               <NugsModal onClick={toggleModal}>
                 <Image src={NugsIcon} alt="nugs logo" />
