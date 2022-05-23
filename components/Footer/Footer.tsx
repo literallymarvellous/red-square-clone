@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { FiTwitter, FiInstagram, FiLinkedin } from "react-icons/fi";
 import styled from "styled-components";
 import { VisuallyHidden } from "../VisuallyHidden";
 import IgIcon from "../../public/icons/IG.svg";

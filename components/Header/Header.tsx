@@ -1,10 +1,8 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { QUERIES } from "../../constants";
 import { usePageContext } from "../../hooks/pageContext";
 import PageLink from "../PageLink/PageLink";
-import { VisuallyHidden } from "../VisuallyHidden";
 
 type HeaderProps = {
   pageTitle: string;
@@ -76,6 +74,7 @@ const fadeIn3 = keyframes`
 const squareFadeIn = keyframes`
   0% {
     opacity: 0;
+    display: inline;
   }
   50%{
     opacity: 1;
@@ -170,7 +169,7 @@ const Shape = styled.span`
 `;
 
 const Square = styled.span`
-  opacity: 0;
+  display: none;
   font-size: 1.5rem;
   font-weight: 600;
   animation: ${squareFadeIn} 2500ms ease-in-out;
