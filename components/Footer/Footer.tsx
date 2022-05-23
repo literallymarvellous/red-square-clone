@@ -40,15 +40,15 @@ const Footer = ({ pageTitle }: FooterProps) => {
           >
             <SocialsWrapper>
               <NugsModal onClick={toggleModal}>
-                <Image src={NugsIcon} width={70} height={70} alt="nugs logo" />
+                <Image src={NugsIcon} width={70} height={25} alt="nugs logo" />
               </NugsModal>
               <Icons>
                 <IconWrapper>
                   <VisuallyHidden>Instagram</VisuallyHidden>
                   <Image
                     src={IgIcon}
-                    width={30}
-                    height={30}
+                    width={20}
+                    height={20}
                     alt="instagram icon"
                   />
                 </IconWrapper>
@@ -56,8 +56,8 @@ const Footer = ({ pageTitle }: FooterProps) => {
                   <VisuallyHidden>Twitter</VisuallyHidden>
                   <Image
                     src={TwIcon}
-                    width={30}
-                    height={30}
+                    width={20}
+                    height={20}
                     alt="Twitter icon"
                   />
                 </IconWrapper>
@@ -65,9 +65,8 @@ const Footer = ({ pageTitle }: FooterProps) => {
                   <VisuallyHidden>Linkendin</VisuallyHidden>
                   <Image
                     src={LiIcon}
-                    width={30}
-                    height={30}
-                    layout="responsive"
+                    width={20}
+                    height={20}
                     alt="Linkedin icon"
                   />
                 </IconWrapper>
@@ -157,6 +156,10 @@ const SocialsWrapper = styled.div`
     padding-block: 8px;
     justify-content: flex-end;
   }
+
+  @media ${QUERIES.laptopAndBigger} {
+    padding-block: 24px;
+  }
 `;
 
 const NugsModal = styled.div`
@@ -206,6 +209,10 @@ const Icons = styled.div`
 const IconWrapper = styled.a`
   cursor: pointer;
   transition: transform 250ms, filter 250ms;
+
+  img {
+    width: 100%;
+  }
 
   &:hover {
     transform: scale(0.99);
