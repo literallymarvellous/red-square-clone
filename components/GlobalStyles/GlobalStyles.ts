@@ -80,7 +80,7 @@ html {
 }
 
 .display {
-  display: block;
+  display: block !important;
 }
 
 body.modal-open {

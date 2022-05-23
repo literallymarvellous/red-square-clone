@@ -40,20 +40,44 @@ const Footer = ({ pageTitle }: FooterProps) => {
           >
             <SocialsWrapper>
               <NugsModal onClick={toggleModal}>
-                <Image src={NugsIcon} alt="nugs logo" />
+                <Image
+                  src={NugsIcon}
+                  width={70}
+                  height={70}
+                  layout="responsive"
+                  alt="nugs logo"
+                />
               </NugsModal>
               <Icons>
                 <IconWrapper>
                   <VisuallyHidden>Instagram</VisuallyHidden>
-                  <Image src={IgIcon} alt="instagram icon" />
+                  <Image
+                    src={IgIcon}
+                    width={20}
+                    height={20}
+                    layout="responsive"
+                    alt="instagram icon"
+                  />
                 </IconWrapper>
                 <IconWrapper>
                   <VisuallyHidden>Twitter</VisuallyHidden>
-                  <Image src={TwIcon} alt="instagram icon" />
+                  <Image
+                    src={TwIcon}
+                    width={20}
+                    height={20}
+                    layout="responsive"
+                    alt="instagram icon"
+                  />
                 </IconWrapper>
                 <IconWrapper>
                   <VisuallyHidden>Linkendin</VisuallyHidden>
-                  <Image src={LiIcon} alt="instagram icon" />
+                  <Image
+                    src={LiIcon}
+                    width={20}
+                    height={20}
+                    layout="responsive"
+                    alt="instagram icon"
+                  />
                 </IconWrapper>
               </Icons>
             </SocialsWrapper>

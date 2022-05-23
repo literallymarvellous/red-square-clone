@@ -9,7 +9,7 @@ import fs from "fs";
 import Backdrop from "../components/Backdrop/Backdrop";
 import NugsModal from "../components/NugsModal/NugsModal";
 import { usePageContext } from "../hooks/pageContext";
-import { animate, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 type HomeProps = {
   title: string;
