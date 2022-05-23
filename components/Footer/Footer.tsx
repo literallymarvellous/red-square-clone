@@ -10,6 +10,7 @@ import PageLink from "../PageLink/PageLink";
 import flipImg from "../../public/images/flipboard.jpg";
 import { QUERIES } from "../../constants";
 import { usePageContext } from "../../hooks/pageContext";
+import Email from "../Email/Email";
 
 type FooterProps = {
   pageTitle: string;
@@ -17,23 +18,13 @@ type FooterProps = {
 
 const Footer = ({ pageTitle }: FooterProps) => {
   const context = usePageContext();
-  const modal = context.modal;
-  const setModal = context.setModal;
-
-  const toggleModal = () => {
-    setModal(!modal);
-    const body = document.querySelector("body") as HTMLBodyElement;
-    body.classList.toggle("modal-open");
-  };
+  const toggleModal = context.toggleModal;
 
   return (
     <footer>
       <Wrapper>
         <MainFooter>
-          <EmailWrapper>
-            <div>Let&#39;s talk.</div>
-            <div>hi@rsq.com</div>
-          </EmailWrapper>
+          <Email />
           <ContactWrapper>
             <SocialsWrapper>
               <NugsModal onClick={toggleModal}>
@@ -88,7 +79,6 @@ const Footer = ({ pageTitle }: FooterProps) => {
 };
 
 const Wrapper = styled.div`
-  isolation: isolate;
   padding-inline: var(--mobile-padding-inline);
 
   @media ${QUERIES.phoneAndBigger} {
@@ -96,7 +86,7 @@ const Wrapper = styled.div`
   }
 
   @media ${QUERIES.tabletAndBigger} {
-    padding-inline: calc(var(--laptop-padding-inline) * 1.8);
+    padding-inline: calc(var(--laptop-padding-inline) * 1.6);
   }
 
   @media ${QUERIES.laptopAndBigger} {
@@ -111,60 +101,23 @@ const Wrapper = styled.div`
 `;
 
 const MainFooter = styled.div`
-  padding-top: clamp(2rem, 11vw, 3.4rem);
-  padding-bottom: 36px;
+  padding-top: clamp(2rem, 8vw, 7rem);
+  padding-bottom: clamp(2rem, 14vw, 9rem);
 
   @media ${QUERIES.tabletAndBigger} {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-  }
-
-  @media ${QUERIES.phoneAndBigger} {
-    padding-bottom: 48px;
+    align-items: center;
   }
 
   @media ${QUERIES.desktop} {
-    padding-bottom: calc(var(--desktop-padding-block) * 1.3);
+    padding-top: clamp(2rem, 3vw, 5rem);
   }
 `;
 
-const EmailWrapper = styled.div`
-  padding-bottom: 16px;
-
-  div {
-    font-family: var(--font-poppins);
-    font-size: 1.9rem;
-    font-weight: 700;
-    line-height: 1.1;
-  }
-
-  div:last-of-type {
-    color: var(--color-red);
-  }
-
-  @media ${QUERIES.phoneAndTablet} {
-    div {
-      font-size: 3.5rem;
-    }
-  }
-
-  @media ${QUERIES.tabletAndLaptop} {
-    padding-block: 2px;
-
-    div {
-      font-size: 2.2rem;
-    }
-  }
-
-  @media ${QUERIES.laptopAndBigger} {
-    div {
-      font-size: 3.5rem;
-    }
-  }
+const ContactWrapper = styled.div`
+  padding-top: 4px;
 `;
-
-const ContactWrapper = styled.div``;
 
 const SocialsWrapper = styled.div`
   display: flex;
@@ -189,7 +142,6 @@ const NugsModal = styled.div`
   cursor: pointer;
 
   &:hover {
-    /* filter: brightness(0.5); */
     transition: filter 250ms, color 250ms;
 
     img {
@@ -256,12 +208,11 @@ const SubFooter = styled.div`
 
   @media ${QUERIES.phoneAndBigger} {
     margin-inline: 0;
-    margin-top: 130px;
     padding-block: 12px;
   }
 
   @media ${QUERIES.tabletAndBigger} {
-    margin-inline: calc(var(--laptop-padding-inline) * -1.45);
+    margin-inline: calc(var(--laptop-padding-inline) * -1.1);
   }
 `;
 
@@ -289,13 +240,17 @@ const SubFooterMain = styled.div`
 
   @media ${QUERIES.phoneAndBigger} {
     justify-content: space-between;
-    padding-inline: 108px;
+    padding-inline: 50px;
 
     div:first-of-type {
       display: block;
       font-size: 1.2rem;
       font-weight: 500;
     }
+  }
+
+  @media ${QUERIES.tabletAndBigger} {
+    padding-inline: 85px;
   }
 `;
 

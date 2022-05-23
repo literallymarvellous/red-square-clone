@@ -14,20 +14,18 @@ const PageLink = ({ pageTitle }: PageLinkProps) => {
   const backdrop = context.backdrop;
   const setBackdrop = context.setBackdrop;
 
-  const mouseEnter = () => {
+  const mouseEnter = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.currentTarget.classList.toggle("backdrop");
     setBackdrop(true);
   };
 
-  const mouseLeave = () => {
+  const mouseLeave = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.currentTarget.classList.toggle("backdrop");
     setBackdrop(false);
   };
 
   return (
-    <Wrapper
-      onMouseEnter={mouseEnter}
-      onMouseLeave={mouseLeave}
-      style={backdrop ? { zIndex: 3 } : {}}
-    >
+    <Wrapper onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
       <Link href={`/${page}`}>
         <LinkWrapper>{pageTitle}</LinkWrapper>
       </Link>

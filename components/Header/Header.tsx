@@ -100,7 +100,7 @@ const Wrapper = styled.div`
 
   @media ${QUERIES.tabletAndBigger} {
     padding-top: var(--laptop-padding-block);
-    padding-inline: calc(var(--laptop-padding-inline) * 1.8);
+    padding-inline: calc(var(--laptop-padding-inline) * 1.6);
   }
 
   @media ${QUERIES.laptopAndBigger} {

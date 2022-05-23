@@ -6,6 +6,9 @@ import Image from "next/image";
 import WorkList from "../components/WorkList/WorkList";
 import styled from "styled-components";
 import fs from "fs";
+import NugsModal from "../components/NugsModal/NugsModal";
+import { usePageContext } from "../hooks/pageContext";
+import Backdrop from "../components/Backdrop/Backdrop";
 
 type WorkProps = {
   title: string;
@@ -14,6 +17,9 @@ type WorkProps = {
 };
 
 const Work: NextPage<WorkProps> = ({ title, images, logos }: WorkProps) => {
+  const context = usePageContext();
+  const toggleModal = context.toggleModal;
+
   return (
     <div>
       <Head>
@@ -23,11 +29,15 @@ const Work: NextPage<WorkProps> = ({ title, images, logos }: WorkProps) => {
 
       <Header pageTitle={title == "Work" ? "Red Square" : "Work"} />
 
-      <main>
+      <Main>
         <WorkList images={images} logos={logos} />
-      </main>
+      </Main>
 
       <Footer pageTitle={title == "Work" ? "Red Square" : "Work"} />
+
+      <NugsModal toggleModal={toggleModal} />
+
+      <Backdrop />
     </div>
   );
 };
@@ -35,6 +45,10 @@ const Work: NextPage<WorkProps> = ({ title, images, logos }: WorkProps) => {
 Work.defaultProps = {
   title: "Work",
 };
+
+const Main = styled.div`
+  isolation: isolate;
+`;
 
 export const getStaticProps: GetStaticProps = async () => {
   const imagesPath = "./public/images";

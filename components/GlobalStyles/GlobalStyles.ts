@@ -87,4 +87,12 @@ body.modal-open {
   height: 100vh;
   overflow-y: hidden;
 }
+
+.backdrop {
+  z-index: 3;
+}
+
+.trans div {
+  transform: "";
+}
 `;

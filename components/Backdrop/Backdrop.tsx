@@ -13,9 +13,7 @@ const Backdrop = () => {
           ? {
               opacity: "0.8",
               position: "absolute",
-              backdropFilter: "blur(20px)",
-              transition:
-                "opacity 300ms ease-out, backdrop-filter 300ms ease-out",
+              transition: "opacity 300ms ease-out",
             }
           : {
               opacity: "0",
@@ -34,7 +32,18 @@ const Wrapper = styled.div`
   height: 100%;
   z-index: 2;
   background: var(--color-black);
-  transition: opacity 5000ms ease-in, backdrop-filter 300ms ease-in;
+  /* background: radial-gradient(
+    circle at 0% 50%,
+    #201f20,
+    #1f1e1f,
+    #1b1a1b,
+    #161616,
+    #101010,
+    #090909,
+    #020202,
+    #000000
+  ); */
+  transition: opacity 5000ms ease-in;
 `;
 
 export default Backdrop;

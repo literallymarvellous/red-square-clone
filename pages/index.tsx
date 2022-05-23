@@ -8,6 +8,7 @@ import { QUERIES } from "../constants";
 import fs from "fs";
 import Backdrop from "../components/Backdrop/Backdrop";
 import NugsModal from "../components/NugsModal/NugsModal";
+import { usePageContext } from "../hooks/pageContext";
 
 type HomeProps = {
   title: string;
@@ -15,6 +16,9 @@ type HomeProps = {
 };
 
 const Home: NextPage<HomeProps> = ({ title, images }) => {
+  const context = usePageContext();
+  const toggleModal = context.toggleModal;
+
   return (
     <PageWrapper>
       <Head>
@@ -82,7 +86,7 @@ const Home: NextPage<HomeProps> = ({ title, images }) => {
       </main>
       <Footer pageTitle={title == "Home" ? "Work" : "Red Square"} />
 
-      <NugsModal />
+      <NugsModal toggleModal={toggleModal} />
 
       <Backdrop />
     </PageWrapper>
@@ -107,7 +111,7 @@ const Wrapper = styled.div`
   }
 
   @media ${QUERIES.tabletAndBigger} {
-    padding-inline: calc(var(--laptop-padding-inline) * 1.8);
+    padding-inline: calc(var(--laptop-padding-inline) * 1.6);
   }
 
   @media ${QUERIES.laptopAndBigger} {
@@ -172,6 +176,11 @@ const Paragraph = styled.p`
   line-height: 1.5;
   padding-block: 36px;
   font-weight: 600;
+
+  @media ${QUERIES.phoneAndBigger} {
+    font-size: 2.8rem;
+    line-height: 1.4;
+  }
 `;
 
 const SecondParagraph = styled.p`
@@ -182,7 +191,9 @@ const SecondParagraph = styled.p`
   line-height: 1.5;
 
   @media ${QUERIES.phoneAndBigger} {
-    padding-bottom: 48px;
+    padding-bottom: calc(48px + 2vw);
+    font-size: 1.5rem;
+    line-height: 1.7;
   }
 `;
 
@@ -198,8 +209,10 @@ const ClientSection = styled.section`
   padding: 56px 0 72px 0;
 
   @media ${QUERIES.tabletAndBigger} {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    padding-top: calc(56px + 2.5vw);
+    padding-bottom: calc(72px + 3.6vw);
   }
 `;
 
@@ -208,7 +221,12 @@ const ListWrapper = styled.ul`
 
   @media ${QUERIES.phoneAndBigger} {
     display: flex;
-    gap: 64px;
+    gap: 180px;
+  }
+
+  @media ${QUERIES.tabletAndBigger} {
+    justify-content: space-between;
+    gap: 32px;
   }
 `;
 
@@ -232,8 +250,13 @@ const List = styled.ul`
 
   @media ${QUERIES.tabletAndBigger} {
     li {
-      font-size: 1rem;
+      font-size: calc(1.1rem + 0.2vw);
+      line-height: calc(2 * 1.6vw);
     }
+  }
+
+  @media ${QUERIES.laptopAndBigger} {
+    font-size: calc(1.2rem + 0.25vw);
   }
 `;
 

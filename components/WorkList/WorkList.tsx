@@ -12,9 +12,9 @@ const WorkList = ({ images, logos }: WorkListProps) => {
   return (
     <Wrapper>
       {images.map((image, i) => (
-        <WorkListrapper key={image}>
+        <WorkListWrapper key={image}>
           <WorkItem image={image} logo={logos[i]} />
-        </WorkListrapper>
+        </WorkListWrapper>
       ))}
     </Wrapper>
   );
@@ -22,9 +22,10 @@ const WorkList = ({ images, logos }: WorkListProps) => {
 
 const Wrapper = styled.div`
   padding-bottom: 32px;
+  isolation: isolate;
 `;
 
-const WorkListrapper = styled.div`
+const WorkListWrapper = styled.div`
   padding-inline: var(--mobile-padding-inline);
   margin: 0 auto;
   padding-block: 8px;

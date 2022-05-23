@@ -11,6 +11,7 @@ export interface PageContextInterface {
   setBackdrop: Dispatch<SetStateAction<boolean>>;
   modal: boolean;
   setModal: Dispatch<SetStateAction<boolean>>;
+  toggleModal: VoidFunction;
 }
 
 export const PageContext = createContext<PageContextInterface | null>(null);
@@ -23,8 +24,16 @@ export const PageContextProvider = ({
   const [backdrop, setBackdrop] = useState(false);
   const [modal, setModal] = useState(false);
 
+  const toggleModal = () => {
+    setModal(!modal);
+    const body = document.querySelector("body") as HTMLBodyElement;
+    body.classList.toggle("modal-open");
+  };
+
   return (
-    <PageContext.Provider value={{ backdrop, setBackdrop, modal, setModal }}>
+    <PageContext.Provider
+      value={{ backdrop, setBackdrop, modal, setModal, toggleModal }}
+    >
       {children}
     </PageContext.Provider>
   );
