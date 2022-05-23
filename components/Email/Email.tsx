@@ -60,7 +60,7 @@ const Email = () => {
         y: "0%",
         transition: {
           ease: [0.25, 0.1, 0.25, 1],
-          delay: 0.5,
+          delay: 0.3,
         },
       }}
       onMouseEnter={mouseEnter}

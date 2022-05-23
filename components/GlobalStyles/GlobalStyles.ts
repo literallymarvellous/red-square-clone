@@ -89,7 +89,7 @@ body.modal-open {
 }
 
 .backdrop {
-  z-index: 3;
+  z-index: 5;
 }
 
 .trans div {

@@ -11,14 +11,8 @@ type HeaderProps = {
 };
 
 const Header = ({ pageTitle }: HeaderProps) => {
-  const [count, setCount] = useState(0);
   const context = usePageContext();
   const backdrop = context.backdrop;
-
-  useEffect(() => {
-    setCount((prev) => prev + 1);
-    console.log(count);
-  }, []);
 
   return (
     <header>

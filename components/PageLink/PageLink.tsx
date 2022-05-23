@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { QUERIES } from "../../constants";
-import { PageContextInterface, usePageContext } from "../../hooks/pageContext";
+import { usePageContext } from "../../hooks/pageContext";
 
 type PageLinkProps = {
   pageTitle: string;
@@ -15,12 +15,12 @@ const PageLink = ({ pageTitle }: PageLinkProps) => {
   const setBackdrop = context.setBackdrop;
 
   const mouseEnter = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.currentTarget.classList.toggle("backdrop");
+    e.currentTarget.classList.add("backdrop");
     setBackdrop(true);
   };
 
   const mouseLeave = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.currentTarget.classList.toggle("backdrop");
+    e.currentTarget.classList.remove("backdrop");
     setBackdrop(false);
   };
 

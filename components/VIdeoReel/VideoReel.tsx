@@ -11,6 +11,7 @@ const VideoReel = ({ images }: VideoReelProps) => {
   const [count, setCount] = useState(1);
 
   useInterval(() => {
+    console.log(count);
     const imgs = document.querySelectorAll(".img");
     const length = imgs.length;
 
@@ -19,7 +20,7 @@ const VideoReel = ({ images }: VideoReelProps) => {
     }
 
     imgs[count - 2]?.classList.remove("display");
-    imgs[count - 1].classList.toggle("display");
+    imgs[count - 1].classList.add("display");
     setCount((prev) => (prev % length) + 1);
   }, 300);
 
