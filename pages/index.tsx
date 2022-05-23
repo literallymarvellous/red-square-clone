@@ -288,8 +288,9 @@ const VideoReelWrapper = styled.div`
   will-change: transform;
 
   &:hover {
-    transform: scale(0.99);
+    transform: scale(0.98);
     transition: transform 200ms ease-out;
+    cursor: pointer;
   }
 `;
 

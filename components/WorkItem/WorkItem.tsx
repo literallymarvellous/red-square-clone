@@ -55,6 +55,7 @@ const ImageWrapper = styled.div`
     filter: brightness(40%);
     transform: scale(0.98);
     transition: filter 300ms ease-out, transform 250ms ease-out;
+    cursor: pointer;
   }
 
   img {

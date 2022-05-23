@@ -74,7 +74,6 @@ const fadeIn3 = keyframes`
 const squareFadeIn = keyframes`
   0% {
     opacity: 0;
-    display: inline;
   }
   50%{
     opacity: 1;
@@ -169,7 +168,6 @@ const Shape = styled.span`
 `;
 
 const Square = styled.span`
-  display: none;
   font-size: 1.5rem;
   font-weight: 600;
   animation: ${squareFadeIn} 2500ms ease-in-out;
