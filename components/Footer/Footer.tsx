@@ -40,13 +40,7 @@ const Footer = ({ pageTitle }: FooterProps) => {
           >
             <SocialsWrapper>
               <NugsModal onClick={toggleModal}>
-                <Image
-                  src={NugsIcon}
-                  width={70}
-                  height={70}
-                  layout="responsive"
-                  alt="nugs logo"
-                />
+                <Image src={NugsIcon} width={70} height={70} alt="nugs logo" />
               </NugsModal>
               <Icons>
                 <IconWrapper>
@@ -55,7 +49,6 @@ const Footer = ({ pageTitle }: FooterProps) => {
                     src={IgIcon}
                     width={30}
                     height={30}
-                    layout="responsive"
                     alt="instagram icon"
                   />
                 </IconWrapper>
@@ -65,7 +58,6 @@ const Footer = ({ pageTitle }: FooterProps) => {
                     src={TwIcon}
                     width={30}
                     height={30}
-                    layout="responsive"
                     alt="Twitter icon"
                   />
                 </IconWrapper>
