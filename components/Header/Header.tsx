@@ -35,9 +35,7 @@ const Header = ({ pageTitle }: HeaderProps) => {
                     }
                   : {}
               }
-            >
-              <VisuallyHidden>Red Square</VisuallyHidden>
-            </Shape>
+            ></Shape>
             <Square>Red Square</Square>
           </SquareWrapper>
         </Link>
