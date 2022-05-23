@@ -170,6 +170,7 @@ const Shape = styled.span`
 `;
 
 const Square = styled.span`
+  opacity: 0;
   font-size: 1.5rem;
   font-weight: 600;
   animation: ${squareFadeIn} 2500ms ease-in-out;

@@ -53,8 +53,8 @@ const Footer = ({ pageTitle }: FooterProps) => {
                   <VisuallyHidden>Instagram</VisuallyHidden>
                   <Image
                     src={IgIcon}
-                    width={20}
-                    height={20}
+                    width={30}
+                    height={30}
                     layout="responsive"
                     alt="instagram icon"
                   />
@@ -63,20 +63,20 @@ const Footer = ({ pageTitle }: FooterProps) => {
                   <VisuallyHidden>Twitter</VisuallyHidden>
                   <Image
                     src={TwIcon}
-                    width={20}
-                    height={20}
+                    width={30}
+                    height={30}
                     layout="responsive"
-                    alt="instagram icon"
+                    alt="Twitter icon"
                   />
                 </IconWrapper>
                 <IconWrapper>
                   <VisuallyHidden>Linkendin</VisuallyHidden>
                   <Image
                     src={LiIcon}
-                    width={20}
-                    height={20}
+                    width={30}
+                    height={30}
                     layout="responsive"
-                    alt="instagram icon"
+                    alt="Linkedin icon"
                   />
                 </IconWrapper>
               </Icons>
