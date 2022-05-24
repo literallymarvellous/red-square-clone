@@ -11,7 +11,6 @@ const VideoReel = ({ images }: VideoReelProps) => {
   const [count, setCount] = useState(1);
 
   useInterval(() => {
-    console.log(count);
     const imgs = document.querySelectorAll(".img");
     const length = imgs.length;
 

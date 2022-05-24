@@ -92,6 +92,7 @@ const Footer = ({ pageTitle }: FooterProps) => {
               src={flipImg}
               alt="flip image"
               layout="responsive"
+              priority
             />
           </SubFooterImageWrapper>
           <SubFooterMain>
