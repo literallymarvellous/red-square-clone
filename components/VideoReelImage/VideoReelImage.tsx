@@ -9,13 +9,11 @@ const VideoReelImage = ({ image }: VideoReelImageProps) => {
   return (
     <ImageWrapper className="img">
       <Image
-        loader={() =>
-          `https://raw.githubusercontent.com/literallymarvellous/red-square-clone/main/public/images/${image}`
-        }
-        src={image}
+        src={`https://raw.githubusercontent.com/literallymarvellous/red-square-clone/main/public/images/${image}`}
         alt={image}
         width={1300}
         height={650}
+        priority
       />
     </ImageWrapper>
   );

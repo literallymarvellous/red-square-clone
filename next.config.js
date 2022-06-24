@@ -10,6 +10,9 @@ const nextConfig = {
     config.resolve.fallback = { fs: false, path: false };
     return config;
   },
+  images: {
+    domains: ["raw.githubusercontent.com"],
+  },
 };
 
 module.exports = nextConfig;
