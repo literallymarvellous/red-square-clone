@@ -26,14 +26,10 @@ const WorkItem = ({ image, logo }: WorkItemProps) => {
       </ImageWrapper>
       <LogoWrapper>
         <Image
-          loader={() =>
-            `https://raw.githubusercontent.com/literallymarvellous/red-square-clone/main/public/logos/${logo}`
-          }
-          src={logo}
+          src={`https://raw.githubusercontent.com/literallymarvellous/red-square-clone/main/public/logos/${logo}`}
           alt={logo}
-          width={120}
-          height={120}
-          layout="responsive"
+          width={1200}
+          height={500}
         />
       </LogoWrapper>
     </Wrapper>
