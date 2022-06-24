@@ -1,6 +1,5 @@
 import Image from "next/image";
 import styled from "styled-components";
-import { VisuallyHidden } from "../VisuallyHidden";
 import IgIcon from "../../public/icons/IG.svg";
 import LiIcon from "../../public/icons/LI.svg";
 import TwIcon from "../../public/icons/TW.svg";
@@ -43,7 +42,6 @@ const Footer = ({ pageTitle }: FooterProps) => {
               </NugsModal>
               <Icons>
                 <IconWrapper>
-                  <VisuallyHidden>Instagram</VisuallyHidden>
                   <Image
                     src={IgIcon}
                     width={20}
@@ -52,7 +50,6 @@ const Footer = ({ pageTitle }: FooterProps) => {
                   />
                 </IconWrapper>
                 <IconWrapper>
-                  <VisuallyHidden>Twitter</VisuallyHidden>
                   <Image
                     src={TwIcon}
                     width={20}
@@ -61,7 +58,6 @@ const Footer = ({ pageTitle }: FooterProps) => {
                   />
                 </IconWrapper>
                 <IconWrapper>
-                  <VisuallyHidden>Linkendin</VisuallyHidden>
                   <Image
                     src={LiIcon}
                     width={20}

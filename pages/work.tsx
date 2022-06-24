@@ -2,7 +2,6 @@ import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
-import Image from "next/image";
 import WorkList from "../components/WorkList/WorkList";
 import styled from "styled-components";
 import fs from "fs";
