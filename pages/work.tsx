@@ -4,7 +4,7 @@ import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import WorkList from "../components/WorkList/WorkList";
 import styled from "styled-components";
-import fs from "fs";
+import fs from "fs/promises";
 import NugsModal from "../components/NugsModal/NugsModal";
 import { usePageContext } from "../hooks/pageContext";
 import Backdrop from "../components/Backdrop/Backdrop";
@@ -52,8 +52,8 @@ const Main = styled.div`
 export const getStaticProps: GetStaticProps = async () => {
   const imagesPath = "./public/images";
   const logosPath = "./public/logos";
-  let images = fs.readdirSync(imagesPath);
-  let logos = fs.readdirSync(logosPath);
+  let images = fs.readdir(imagesPath);
+  let logos = fs.readdir(logosPath);
   return {
     props: {
       images,
