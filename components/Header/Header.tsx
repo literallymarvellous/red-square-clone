@@ -28,7 +28,7 @@ const Header = ({ pageTitle }: HeaderProps) => {
                   : {}
               }
             ></Shape>
-            <Square>Red Square</Square>
+            {/* <Square>Red Square</Square> */}
           </SquareWrapper>
         </Link>
 
