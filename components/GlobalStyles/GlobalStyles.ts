@@ -79,10 +79,6 @@ html {
   --desktop-padding-inline: 136px;
 }
 
-body {
-  background: var(--color-black);
-}
-
 .display {
   display: block !important;
 }

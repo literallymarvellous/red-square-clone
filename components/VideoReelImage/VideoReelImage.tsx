@@ -14,10 +14,9 @@ const VideoReelImage = ({ image }: VideoReelImageProps) => {
         }
         src={image}
         alt={image}
-        width={270}
-        height={160}
+        width={1300}
+        height={500}
         layout="responsive"
-        priority
       />
     </ImageWrapper>
   );
