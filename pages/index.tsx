@@ -5,7 +5,7 @@ import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import VideoReel from "../components/VIdeoReel/VideoReel";
 import { QUERIES } from "../constants";
-import fs from "fs";
+import fs from "fs/promises";
 import Backdrop from "../components/Backdrop/Backdrop";
 import NugsModal from "../components/NugsModal/NugsModal";
 import { usePageContext } from "../hooks/pageContext";
@@ -386,7 +386,7 @@ const List = styled.ul`
 
 export const getStaticProps: GetStaticProps = async () => {
   const imagesPath = "./public/images";
-  let images = fs.readdirSync(imagesPath);
+  let images = fs.readFile(imagesPath);
   return {
     props: {
       images,
