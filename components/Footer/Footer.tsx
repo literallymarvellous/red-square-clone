@@ -87,8 +87,7 @@ const Footer = ({ pageTitle }: FooterProps) => {
               className="numsImg"
               src={flipImg}
               alt="flip image"
-              width={1300}
-              height={500}
+              layout="responsive"
               priority
             />
           </SubFooterImageWrapper>

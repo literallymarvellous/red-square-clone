@@ -15,7 +15,8 @@ const VideoReelImage = ({ image }: VideoReelImageProps) => {
         src={image}
         alt={image}
         width={1300}
-        height={500}
+        height={700}
+        // layout="responsive"
         priority
       />
     </ImageWrapper>
@@ -23,7 +24,7 @@ const VideoReelImage = ({ image }: VideoReelImageProps) => {
 };
 
 const ImageWrapper = styled.div`
-  display: none;
+  /* display: none; */
   position: absolute;
   inset: 0;
 
