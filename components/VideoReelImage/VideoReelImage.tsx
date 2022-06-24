@@ -16,7 +16,9 @@ const VideoReelImage = ({ image }: VideoReelImageProps) => {
         alt={image}
         width={1300}
         height={500}
-        layout="responsive"
+        layout="fill"
+        objectFit="cover"
+        priority
       />
     </ImageWrapper>
   );
