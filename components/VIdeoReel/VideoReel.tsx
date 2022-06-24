@@ -24,17 +24,15 @@ const VideoReel = ({ images }: VideoReelProps) => {
   }, 300);
 
   return (
-    <Wrapper>
+    <>
       {images.map((image, i) => (
         <VideoReelWrapper key={image}>
           <VideoReelImage image={image} />
         </VideoReelWrapper>
       ))}
-    </Wrapper>
+    </>
   );
 };
-
-const Wrapper = styled.div``;
 
 const VideoReelWrapper = styled.div`
   position: relative;
