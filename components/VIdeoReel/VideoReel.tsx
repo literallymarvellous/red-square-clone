@@ -27,7 +27,7 @@ const VideoReel = ({ images }: VideoReelProps) => {
     <Wrapper>
       {images.map((image, i) => (
         <VideoReelWrapper key={image}>
-          {/* <VideoReelImage image={image} /> */}
+          <VideoReelImage image={image} />
         </VideoReelWrapper>
       ))}
     </Wrapper>
