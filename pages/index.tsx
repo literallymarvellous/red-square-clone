@@ -386,7 +386,7 @@ const List = styled.ul`
 
 export const getStaticProps: GetStaticProps = async () => {
   const imagesPath = "./public/images";
-  let images = fs.readdir(imagesPath);
+  let images = await fs.readdir(imagesPath);
   return {
     props: {
       images,

@@ -52,8 +52,8 @@ const Main = styled.div`
 export const getStaticProps: GetStaticProps = async () => {
   const imagesPath = "./public/images";
   const logosPath = "./public/logos";
-  let images = fs.readdir(imagesPath);
-  let logos = fs.readdir(logosPath);
+  let images = await fs.readdir(imagesPath);
+  let logos = await fs.readdir(logosPath);
   return {
     props: {
       images,
