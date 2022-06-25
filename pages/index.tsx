@@ -78,13 +78,13 @@ const Home: NextPage<HomeProps> = ({ title, images }) => {
       <main>
         <Wrapper>
           <motion.div
-            initial={{ y: 125 }}
-            animate={{ y: 0 }}
-            transition={{
-              delay: 2.5,
-              ease: [0.25, 0.1, 0.25, 1],
-              duration: 1.5,
-            }}
+          // initial={{ y: 125 }}
+          // animate={{ y: 0 }}
+          // transition={{
+          //   delay: 2.5,
+          //   ease: [0.25, 0.1, 0.25, 1],
+          //   duration: 1.5,
+          // }}
           >
             <Heading
               as={motion.h1}
@@ -101,18 +101,18 @@ const Home: NextPage<HomeProps> = ({ title, images }) => {
             </Heading>
           </motion.div>
 
-          <ReelSection
-          // as={motion.div}
-          // initial={{ opacity: 0, y: 150 }}
-          // animate={{ opacity: 1, y: 0 }}
-          // transition={{
-          //   ease: [0.25, 0.1, 0.25, 1],
-          //   duration: 1.5,
-          //   delay: 2.5,
-          // }}
-          >
-            <VideoReelWrapper>
-              <VideoReel images={images} />
+          <ReelSection>
+            <VideoReelWrapper
+            // as={motion.div}
+            // initial={{ opacity: 0, y: 150 }}
+            // animate={{ opacity: 1, y: 0 }}
+            // transition={{
+            //   ease: [0.25, 0.1, 0.25, 1],
+            //   duration: 1.5,
+            //   delay: 2.5,
+            // }}
+            >
+              {/* <VideoReel images={images} /> */}
             </VideoReelWrapper>
           </ReelSection>
 
@@ -267,6 +267,7 @@ const Heading = styled.h1`
 `;
 
 const ReelSection = styled.div`
+  height: clamp(190px, 53vw, 700px);
   padding-top: clamp(2rem, 9vw, 4rem);
   padding-bottom: 28px;
   margin-inline: calc(var(--mobile-padding-inline) * -1);
@@ -282,7 +283,8 @@ const ReelSection = styled.div`
 
 const VideoReelWrapper = styled.div`
   width: 100%;
-  height: clamp(190px, 55vw, 700px);
+  height: 100%;
+  /* height: clamp(190px, 53vw, 700px); */
   overflow: hidden;
   transition: transform 200ms ease-in;
   will-change: transform;
