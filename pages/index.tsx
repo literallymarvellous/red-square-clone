@@ -103,16 +103,16 @@ const Home: NextPage<HomeProps> = ({ title, images }) => {
 
           <ReelSection>
             <VideoReelWrapper
-            // as={motion.div}
-            // initial={{ opacity: 0, y: 150 }}
-            // animate={{ opacity: 1, y: 0 }}
-            // transition={{
-            //   ease: [0.25, 0.1, 0.25, 1],
-            //   duration: 1.5,
-            //   delay: 2.5,
-            // }}
+              as={motion.div}
+              initial={{ opacity: 0, y: 150 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                ease: [0.25, 0.1, 0.25, 1],
+                duration: 1.5,
+                delay: 2.5,
+              }}
             >
-              {/* <VideoReel images={images} /> */}
+              <VideoReel images={images} />
             </VideoReelWrapper>
           </ReelSection>
 
