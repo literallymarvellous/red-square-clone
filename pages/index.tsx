@@ -78,13 +78,13 @@ const Home: NextPage<HomeProps> = ({ title, images }) => {
       <main>
         <Wrapper>
           <motion.div
-          // initial={{ y: 125 }}
-          // animate={{ y: 0 }}
-          // transition={{
-          //   delay: 2.5,
-          //   ease: [0.25, 0.1, 0.25, 1],
-          //   duration: 1.5,
-          // }}
+            initial={{ y: 125 }}
+            animate={{ y: 0 }}
+            transition={{
+              delay: 2.5,
+              ease: [0.25, 0.1, 0.25, 1],
+              duration: 1.5,
+            }}
           >
             <Heading
               as={motion.h1}

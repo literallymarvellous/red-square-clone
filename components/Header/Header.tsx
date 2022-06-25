@@ -28,7 +28,11 @@ const Header = ({ pageTitle }: HeaderProps) => {
                   : {}
               }
             ></Shape>
-            <Square>Red Square</Square>
+            <Square
+              style={pageTitle ? { display: "block" } : { display: "none" }}
+            >
+              Red Square
+            </Square>
           </SquareWrapper>
         </Link>
 
