@@ -12,7 +12,7 @@ const nextConfig = {
   },
   images: {
     domains: ["raw.githubusercontent.com"],
-    minimumCacheTTL: 315360000,
+    minimumCacheTTL: 31536000,
   },
 };
 
