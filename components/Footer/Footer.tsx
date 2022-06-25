@@ -241,10 +241,10 @@ const SubFooterMain = styled.div`
   justify-content: center;
   align-items: center;
   font-family: var(--font-poppins);
+  color: var(--color-white);
 
   div:first-of-type {
     display: none;
-    color: var(--color-white);
     position: relative;
   }
 
@@ -252,7 +252,7 @@ const SubFooterMain = styled.div`
     justify-content: space-between;
     padding-inline: 50px;
 
-    div:first-of-type {
+    div {
       display: block;
       font-size: 1.2rem;
       font-weight: 500;
