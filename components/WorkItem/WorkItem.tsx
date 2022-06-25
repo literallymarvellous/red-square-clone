@@ -16,8 +16,7 @@ const WorkItem = ({ image, logo }: WorkItemProps) => {
           src={`https://raw.githubusercontent.com/literallymarvellous/red-square-clone/main/public/images/${image}`}
           alt={image}
           width={1200}
-          height={500}
-          layout="responsive"
+          height={700}
         />
       </ImageWrapper>
       <LogoWrapper>
