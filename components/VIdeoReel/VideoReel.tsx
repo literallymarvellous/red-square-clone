@@ -36,7 +36,6 @@ const VideoReel = ({ images }: VideoReelProps) => {
 
 const VideoReelWrapper = styled.div`
   position: relative;
-  /* height: 100%; */
 `;
 
 export default VideoReel;
