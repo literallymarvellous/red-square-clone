@@ -89,6 +89,7 @@ const EmailWrapper = styled.div`
   transform-style: preserve-3d;
   transition: transform 250ms ease-in;
   will-change: transform;
+  color: var(--color-white);
 
   ${Wrapper}:hover & {
     transition: transform 1ms ease;

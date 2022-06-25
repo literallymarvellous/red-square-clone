@@ -252,11 +252,17 @@ const SubFooterMain = styled.div`
     justify-content: space-between;
     padding-inline: 50px;
 
-    div {
+    div:first-of-type {
       display: block;
       font-size: 1.2rem;
       font-weight: 500;
     }
+
+    /* div:last-of-type {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: 500;
+    } */
   }
 
   @media ${QUERIES.tabletAndBigger} {
