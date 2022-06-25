@@ -13,10 +13,7 @@ const WorkItem = ({ image, logo }: WorkItemProps) => {
     <Wrapper>
       <ImageWrapper>
         <Image
-          loader={() =>
-            `https://raw.githubusercontent.com/literallymarvellous/red-square-clone/main/public/images/${image}`
-          }
-          src={image}
+          src={`https://raw.githubusercontent.com/literallymarvellous/red-square-clone/main/public/images/${image}`}
           alt={image}
           width={270}
           height={160}
